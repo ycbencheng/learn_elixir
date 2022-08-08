@@ -8,6 +8,20 @@ defmodule Identicon do
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_odd_squares
+  end
+
+  def hash_input(input) do
+    hex = :crypto.hash(:md5, input)
+    |> :binary.bin_to_list
+
+    %Identicon.Image{hex: hex}
+  end
+
+  def pick_color(image) do
+    %Identicon.Image{hex: [r, g, b | _rest]} = image
+    
+    %Identicon.Image{image | color: {r, g, b}}
   end
 
   def build_grid(image) do
@@ -28,16 +42,12 @@ defmodule Identicon do
     row ++ [second, first]
   end
 
-  def pick_color(image) do
-    %Identicon.Image{hex: [r, g, b | _rest]} = image
-    
-    %Identicon.Image{image | color: {r, g, b}}
-  end
+  def filter_odd_squares(image) do
+    %Identicon.Image{grid: grid} = image
 
-  def hash_input(input) do
-    hex = :crypto.hash(:md5, input)
-    |> :binary.bin_to_list
+    grid = Enum.filter(grid, fn({code, _index}) -> rem(code, 2) end)
 
-    %Identicon.Image{hex: hex}
+    %Identicon.Image{image | grid: grid}
   end
 end
+ 
