@@ -11,6 +11,7 @@ defmodule Identicon do
     |> filter_odd_squares
     |> build_pixel_map
     |> draw_image
+    |> save_image(input)
   end
 
   def hash_input(input) do
@@ -47,7 +48,7 @@ defmodule Identicon do
   def filter_odd_squares(image) do
     %Identicon.Image{grid: grid} = image
 
-    grid = Enum.filter(grid, fn({code, _index}) -> rem(code, 2) end)
+    grid = Enum.filter(grid, fn({code, _index}) -> rem(code, 2) == 0 end)
 
     %Identicon.Image{image | grid: grid}
   end
@@ -79,6 +80,10 @@ defmodule Identicon do
     end)
 
     :egd.render(identicon)
+  end
+
+  def save_image(image, input) do
+    File.write("#{input}.png", image)
   end
 end
  
