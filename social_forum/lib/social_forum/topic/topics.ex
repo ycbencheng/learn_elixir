@@ -3,7 +3,7 @@ defmodule SocialForum.Topic.Topics do
   import Ecto.Changeset
 
   schema "topics" do
-
+    field :title, :string
 
     timestamps()
   end

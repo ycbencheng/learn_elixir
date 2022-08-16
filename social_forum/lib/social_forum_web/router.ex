@@ -18,6 +18,7 @@ defmodule SocialForumWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/topics/new", TopicsController, :new
   end
 
   # Other scopes may use custom stacks.

@@ -19,7 +19,7 @@ defmodule SocialForumWeb.TopicsController do
       {:ok, topics} ->
         conn
         |> put_flash(:info, "Topics created successfully.")
-        |> redirect(to: Routes.topics_path(conn, :show, topics))
+        # |> redirect(to: Routes.topics_path(conn, :show, topics))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule SocialForumWeb.TopicsController do
       {:ok, topics} ->
         conn
         |> put_flash(:info, "Topics updated successfully.")
-        |> redirect(to: Routes.topics_path(conn, :show, topics))
+        # |> redirect(to: Routes.topics_path(conn, :show, topics))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", topics: topics, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule SocialForumWeb.TopicsController do
 
     conn
     |> put_flash(:info, "Topics deleted successfully.")
-    |> redirect(to: Routes.topics_path(conn, :index))
+    # |> redirect(to: Routes.topics_path(conn, :index))
   end
 end
