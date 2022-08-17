@@ -15,7 +15,7 @@ defmodule SocialForumWeb.TopicsController do
   end
 
   def create(conn, %{"topics" => topics_params}) do
-    case Topic. (topics_params) do
+    case Topic.create_topics(topics_params) do
       {:ok, topics} ->
         conn
         |> put_flash(:info, "Topics created successfully.")

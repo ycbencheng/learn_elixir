@@ -4,6 +4,8 @@ defmodule SocialForum.Repo.Migrations.AddTopics do
   def change do
     create table (:topics) do
       add :title, :string
+
+      timestamps()
     end
   end
 end
