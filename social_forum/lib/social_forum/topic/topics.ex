@@ -11,7 +11,7 @@ defmodule SocialForum.Topic.Topics do
   @doc false
   def changeset(topics, attrs) do
     topics
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:title])
+    |> validate_required([:title])
   end
 end
