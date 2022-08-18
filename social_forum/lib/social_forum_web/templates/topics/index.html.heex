@@ -1,7 +1,11 @@
 <span>
   <h1>List of Topics</h1>
   
-  <%= link "New Topics", to: Routes.topics_path(@conn, :new) %>
+  <div class="fixed-action-btn">
+    <%= link to: Routes.topics_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
+        <i class="material-icons">add</i>
+    <% end %>
+  </div>
 </span>
 
 <table>
