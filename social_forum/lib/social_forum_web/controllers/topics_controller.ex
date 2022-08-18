@@ -26,11 +26,6 @@ defmodule SocialForumWeb.TopicsController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    topics = Topic.get_topics!(id)
-    render(conn, "show.html", topics: topics)
-  end
-
   def edit(conn, %{"id" => id}) do
     topics = Topic.get_topics!(id)
     changeset = Topic.change_topics(topics)
