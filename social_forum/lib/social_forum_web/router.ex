@@ -8,6 +8,7 @@ defmodule SocialForumWeb.Router do
     plug :put_root_layout, {SocialForumWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Ueberauth
   end
 
   pipeline :api do
@@ -16,13 +17,13 @@ defmodule SocialForumWeb.Router do
 
   scope "/", SocialForumWeb do
     pipe_through :browser
-
+     
     get "/", PageController, :index
     resources "/topics", TopicsController
   end
 
-  scope "/auth", Discuss do
-    pipe_through :browser
+  scope "/auth", SocialForumWeb do
+    pipe_through :browser 
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback

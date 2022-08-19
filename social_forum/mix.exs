@@ -48,7 +48,7 @@ defmodule SocialForum.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:ueberauth, "~> 0.7"}
+      {:ueberauth_github, "~> 0.7"}
     ]
   end
 

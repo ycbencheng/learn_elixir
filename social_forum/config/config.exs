@@ -53,10 +53,9 @@ import_config "#{config_env()}.exs"
 
 config :ueberauth, Ueberauth,
   providers: [
-    facebook: { Ueberauth.Strategy.Facebook, [ opt1: "value", opts2: "value" ] },
-    github: { Ueberauth.Strategy.Github, [ opt1: "value", opts2: "value" ] }
+    github: { Ueberauth.Strategy.Github, [] }
   ]
 
-config :ueberauth, Ueberauth.Strategy.Github.Oauth,
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
   client_id: System.get_env("GITHUB_CLIENT_ID"),
   client_secret: System.get_env("GITHUB_CLIENT_SECRET")
